@@ -1,5 +1,18 @@
 #!/usr/bin/env python3
-import os, gzip, io, re
+
+"""
+Run this script in order to replace the original cyan-ish color the theme uses
+(e.g. for highlighting the currently active application in the task bar) to the
+currently set system accent color (as defined in KDE Plasma settings).
+
+There is probably a much nicer way to do this, but this LLM-generated quick-and-
+dirty script should work for most cases.
+"""
+
+import os
+import gzip
+import io
+import re
 
 ROOT = os.path.dirname(os.path.abspath(__file__))
 SVGZ_DIRS = [os.path.join(ROOT, "widgets"), os.path.join(ROOT, "icons"), os.path.join(ROOT, "dialogs")]
@@ -27,7 +40,9 @@ HEX_RE = re.compile(r"^#([0-9a-fA-F]{6})$")
 
 
 def detect_accent() -> str:
-    import subprocess, shutil, re
+    import subprocess
+    import shutil
+    import re
 
     # Try kreadconfig5/6 from kdeglobals General AccentColor
     for cmd in ("kreadconfig6", "kreadconfig5"):

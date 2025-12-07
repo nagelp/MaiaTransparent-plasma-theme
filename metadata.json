@@ -1,0 +1,25 @@
+{
+  "KPlugin": {
+    "Id": "Maia_Transparent",
+    "Name": "Maia Transparent",
+    "Description": "Theme with fully transparent panel and menus - a slight modification of original Maia theme for Manjaro KDE",
+    "Version": "4.3",
+    "Category": "Plasma Theme",
+    "License": "CC BY-SA",
+    "Website": "https://www.pling.com/p/1085371",
+    "Authors": [
+      {
+        "Name": "Michał Dybczak",
+        "Email": "michal.dybczak@gmail.com"
+      },
+      {
+        "Name": "Patrick Nagel",
+        "Email": "mail@patrick-nagel.net"
+      }
+    ],
+    "EnabledByDefault": true
+  },
+  "KPackageStructure": "Plasma/Theme",
+  "X-Plasma-API-MinimumVersion": "5.13",
+  "X-Plasma-API": "6.0"
+}

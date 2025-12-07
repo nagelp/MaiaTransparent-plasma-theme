@@ -11,6 +11,12 @@ Note: When first applying this theme it's quite common that the panel border wil
 
 Release Notes:
 
+Version: 4.3
+
+- Switched from metadata.desktop to metadata.json
+- Removed `colors` file, as the colors are hard-coded in the .svgz files
+- Added rudimentary script `update_theme_colors.py` (mostly written by an LLM), which looks for the original cyanish colors in the .svgz files and replaces them with the currently set KDE / Plasma accent color.
+
 Version: 4.2
 
  Update metadata.desktop
