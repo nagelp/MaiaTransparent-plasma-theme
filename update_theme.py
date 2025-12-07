@@ -28,11 +28,14 @@ HEX_RE = re.compile(r"^#([0-9a-fA-F]{6})$")
 
 def detect_accent() -> str:
     import subprocess, shutil, re
+
     # Try kreadconfig5/6 from kdeglobals General AccentColor
     for cmd in ("kreadconfig6", "kreadconfig5"):
         if shutil.which(cmd):
             try:
-                out = subprocess.check_output([cmd, "--file", "kdeglobals", "--group", "General", "--key", "AccentColor"], text=True).strip()
+                out = subprocess.check_output(
+                    [cmd, "--file", "kdeglobals", "--group", "General", "--key", "AccentColor"], text=True
+                ).strip()
                 if out:
                     if out.startswith("#") and re.match(r"^#([0-9a-fA-F]{6})$", out):
                         return out.lower()
@@ -45,7 +48,9 @@ def detect_accent() -> str:
     for cmd in ("kreadconfig6", "kreadconfig5"):
         if shutil.which(cmd):
             try:
-                out = subprocess.check_output([cmd, "--file", "kdeglobals", "--group", "Colors:Selection", "--key", "BackgroundNormal"], text=True).strip()
+                out = subprocess.check_output(
+                    [cmd, "--file", "kdeglobals", "--group", "Colors:Selection", "--key", "BackgroundNormal"], text=True
+                ).strip()
                 if out and "," in out:
                     r, g, b = [int(p) for p in out.split(",")]
                     return f"#{r:02x}{g:02x}{b:02x}"
@@ -88,6 +93,7 @@ def main():
             for name in files:
                 if name.endswith(".svgz"):
                     p = os.path.join(root, name)
+                    print(p)
                     if process_file(p, accent):
                         changed += 1
     print(f"Accent: {accent} | Files updated: {changed}")
